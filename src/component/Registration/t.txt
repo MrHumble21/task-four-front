@@ -1,0 +1,29 @@
+<Form className="w-50">
+          <FormGroup>
+            <Input type="text" name="name" id="name" placeholder="Name" />
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type="Surname"
+              name="Surname"
+              id="surname"
+              placeholder="Surname"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Input type="email" name="Email" id="Email" placeholder="Email" />
+          </FormGroup>
+          <FormGroup>
+            <Input
+              type="password"
+              name="Password"
+              id="Password"
+              placeholder="Password"
+            />
+          </FormGroup>
+          <Container className="d-flex justify-content-center">
+            <Button type="button btn-block" className="btn btn-outline-primary">
+              Register
+            </Button>
+          </Container>
+        </Form>
