@@ -8,6 +8,7 @@ import { ReactstrapInput } from "reactstrap-formik";
 import animationData from "./anim.json";
 import { useState } from "react";
 import { useEffect } from "react";
+import { baseUrl } from "../../constant";
 
 const defaultOptions = {
   loop: true,
@@ -47,20 +48,19 @@ function Login(props) {
             // window.location.reload();
             // console.log(values);
             axios
-              .post("/login", { values })
+              .post(baseUrl + "/login", { values })
               .then(function (response) {
                 if (response.status === 200 || response.statusText === "OK") {
                   console.log("redirecting to ...");
                   window.location.href = "/admin";
-                 
-                } 
+                }
               })
               .catch(function (error) {
                 console.log(error.message);
-                if(error.message == 'Request failed with status code 401'){
-                  setNo("not authorized")
-                }else{
-                setNo("Invalid password or email address");
+                if (error.message == "Request failed with status code 401") {
+                  setNo("not authorized");
+                } else {
+                  setNo("Invalid password or email address");
                 }
               });
           }}

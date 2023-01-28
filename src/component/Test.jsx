@@ -3,6 +3,7 @@ import { Field, Form, Formik } from "formik";
 import { Link } from "react-router-dom";
 import { Button, Col, Container, Row } from "reactstrap";
 import { ReactstrapInput } from "reactstrap-formik";
+import { baseUrl } from "../constant";
 // import { redirect } from "react-router-dom";
 function Test() {
   return (
@@ -27,7 +28,7 @@ function Test() {
       }}
       onSubmit={(values, { setSubmitting }) => {
         axios
-          .post("/create_user", values)
+          .post(baseUrl + "/create_user", values)
           .then(function (response) {
             console.log(response);
             if (response.status === 200 || response.statusText === "OK") {

@@ -2,6 +2,7 @@ import axios, { all } from "axios";
 import React, { useState } from "react";
 import { Badge, Button, Container } from "reactstrap";
 import moment from "moment/moment.js";
+import { baseUrl } from "../../constant";
 
 function Admin() {
   const [allUsers, setUsers] = useState([]);
@@ -10,7 +11,7 @@ function Admin() {
   const listOfUsers = [];
   const getdata = async () => {
     const data = await axios
-      .get("/all_users")
+      .get(baseUrl + "/all_users")
       .then((res) => JSON.parse(res.data))
       .then((data) => data);
 
@@ -33,7 +34,7 @@ function Admin() {
             onClick={async () => {
               if (listOfUsers.length > 0) {
                 axios
-                  .post("/delete_selected_users", {
+                  .post(baseUrl + "/delete_selected_users", {
                     selectedUsers: listOfUsers,
                   })
                   .then((res) => console.log(res));
@@ -53,7 +54,7 @@ function Admin() {
               }}
               onClick={() => {
                 axios
-                  .post("/delete_all", { selectedUsers: listOfUsers })
+                  .post(baseUrl + "/delete_all", { selectedUsers: listOfUsers })
                   .then((res) => console.log(res));
 
                 window.location.reload();
@@ -160,7 +161,7 @@ function Admin() {
                         type="button"
                         onClick={async () => {
                           await axios
-                            .post(`/block_user`, {
+                            .post(baseUrl + `/block_user`, {
                               id: user.id,
                             })
                             .then((res) => {
@@ -182,7 +183,7 @@ function Admin() {
                         onClick={async () => {
                           console.log("clicked");
                           await axios
-                            .post(`/delete_user`, { id: user.id })
+                            .post(baseUrl + `/delete_user`, { id: user.id })
                             .then((res) => {
                               console.log(res);
                             });
